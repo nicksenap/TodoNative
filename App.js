@@ -15,7 +15,12 @@ import AddListModel from "./components/AddListModal";
 
 export default function App() {
   const [addTodoVisible, setAddTodoVisible] = useState(false);
+  const [lists, setLists] = useState(tempData);
   const toggleAddTodoModal = () => setAddTodoVisible(!addTodoVisible);
+
+  const RenderList = (list) => {
+    return <TodoList list={list}></TodoList>;
+  };
 
   return (
     <View style={styles.container}>
@@ -44,7 +49,7 @@ export default function App() {
 
       <View style={{ height: 275, paddingLeft: 32 }}>
         <FlatList
-          data={tempData}
+          data={lists}
           keyExtractor={(item) => item.name}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
